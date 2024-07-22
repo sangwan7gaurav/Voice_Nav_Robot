@@ -10,21 +10,17 @@ def draw_square():
 
     vel_msg = Twist()
 
-    # Draw the square
     for _ in range(5):
-        # Move forward
-        vel_msg.linear.x = 2.0  # move with a constant speed
+        vel_msg.linear.x = 2.0 
         vel_msg.angular.z = 0
         velocity_publisher.publish(vel_msg)
         rospy.sleep(2)  # move for 2 seconds
 
-        # Turn 90 degrees
         vel_msg.linear.x = 0
-        vel_msg.angular.z = 1.57  # 90 degrees in radians
+        vel_msg.angular.z = 1.57 
         velocity_publisher.publish(vel_msg)
         rospy.sleep(1)  # turn for 1 second
 
-    # Stop the turtle
     vel_msg.linear.x = 0
     vel_msg.angular.z = 0
     velocity_publisher.publish(vel_msg)
