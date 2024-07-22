@@ -67,7 +67,17 @@ Turtlesim is a simple application (called package by using the ROS terminology) 
 Gazebo is a powerful and versatile robot simulation software that integrates with the Robot Operating System (ROS). It provides a realistic simulation environment where users can test and develop robots without needing physical hardware. Gazebo offers high-fidelity physics simulation, advanced 3D graphics, and a variety of sensors and actuators that mimic real-world counterparts.
 
 Some common commands to use Gazebo:<br>
-```gazebo``` <br> ```gazebo worlds/empty.world``` <br>```roslaunch gazebo_ros empty_world.launch ```<br>```rosrun gazebo_ros spawn_model -file <path_to_urdf> -urdf -model <model_name>```
+```gazebo``` <br> ```gazebo worlds/empty.world``` <br>```roslaunch gazebo_ros empty_world.launch ```<br>```rosrun gazebo_ros spawn_model -file <path_to_urdf> -urdf -model <model_name>```<br>
+![Screenshot_from_2024-07-08_19-38-48_optimized](https://github.com/user-attachments/assets/08304493-6c58-4234-9e66-24d0673e3c46)
+
+## TURTLEBOT3
+TurtleBot 3 is a low-cost, personal robot kit with open-source software that is popular for education and research in robotics. It is designed to be customizable and extendable with a variety of sensors and actuators, making it an excellent platform for learning ROS and robotics in general.<br>
+
+Some common commands:
+`roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch`<br>`roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`<br>`rostopic echo /scan`<br>
+
+
+
 
 
 
