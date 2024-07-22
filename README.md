@@ -76,6 +76,8 @@ TurtleBot 3 is a low-cost, personal robot kit with open-source software that is 
 Some common commands:<br>
 `roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch`<br>`roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`<br>`rostopic echo /scan`<br>
 ![ezgif-1-2f630658bd](https://github.com/user-attachments/assets/40d77a59-1c62-48e0-a3b2-d63e4d36044a)
+## VOICE RECOGNITION
+Creating a voice recognition model using PocketSphinx and GStreamer involves setting up a pipeline that captures audio input, processes it through PocketSphinx’s acoustic model, and outputs the recognized text. First, you’ll need to install PocketSphinx and its dependencies, such as SphinxBase, to handle the acoustic model and language processing. Additionally, GStreamer and its relevant plugins must be installed to facilitate audio capture and streaming. Once the necessary software is installed, you can configure GStreamer to capture audio from a microphone and pass it to PocketSphinx for real-time speech recognition. This setup allows for continuous voice input processing, making it suitable for various applications like voice-controlled interfaces or hands-free navigation systems.
 
 
 
