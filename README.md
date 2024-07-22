@@ -73,8 +73,10 @@ Some common commands to use Gazebo:<br>
 ## TURTLEBOT3
 TurtleBot 3 is a low-cost, personal robot kit with open-source software that is popular for education and research in robotics. It is designed to be customizable and extendable with a variety of sensors and actuators, making it an excellent platform for learning ROS and robotics in general.<br>
 
-Some common commands:
+Some common commands:<br>
 `roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch`<br>`roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`<br>`rostopic echo /scan`<br>
+![ezgif-1-2f630658bd](https://github.com/user-attachments/assets/40d77a59-1c62-48e0-a3b2-d63e4d36044a)
+
 
 
 
