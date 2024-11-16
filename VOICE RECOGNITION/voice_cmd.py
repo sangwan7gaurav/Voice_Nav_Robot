@@ -28,7 +28,7 @@ def callback(data):
         pass
 
 def voice_cmd():
-    rospy.init_node('voice_cmd', anonymous=True)
+    rospy.init_node('recognized_speech', anonymous=True)
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
     rate = rospy.Rate(1) 
 
