@@ -1,89 +1,138 @@
-#  **VOICE NAVIGATION ROBOT**
-## DOCUMENTATION
+# Voice Navigation Robot
 
-1. INSTALLATION
+## Objective
 
-        Installed Ubuntu 20.04 Focal Fossa in UTM
-        Link :- https://medium.com/@shubhjain10102003/install-linux-ubuntu-20-04-on-m1-m2-mac-silicon-de1992d5fa26
+To create a voice-controlled robot using ROS that can be controlled using voice commands to navigate and perform tasks.
 
-        Installed ROS noetic 
-        Link :-http://wiki.ros.org/noetic/Installation/Ubuntu
+## Requirements
 
-2. BASIC TESTING:
- 
-        Basic testing was done on terminal to Test ROS is working smoothly.
-        Link :-https://www.youtube.com/playlist?list=PLBbhfIdh4NdgBBkX7q0Y3UukO2_ZoICee
+* Ubuntu 20.04
+* ROS Noetic
+* Pocketsphinx
+* Gstreamer
 
-<!-- a3.COURSE:
-
-&emsp;&emsp;&emsp;ROS 3:
-
-&emsp;&emsp;&emsp;&emsp;&emsp;VIDEOS:<br>
-     &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;[ROS Workspaces,Packages](https://drive.google.com/file/d/16arajHlpuz45c9tp-KZZJxwJzCaUP2X6/view?usp=share_link)<br>
-     &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;[ROS project setup](https://drive.google.com/file/d/16kLgYUu4tApYAAiKzPZYJHJa5OD0TrR-/view?usp=share_link)<br>
-     &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;[ROS Master node](https://drive.google.com/file/d/174kcXmI5nHjqsf2ohDChGMS6xVTwQLjv/view?usp=share_link)<br>
-     &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;[ROS Topics, Nodes and Messages](https://drive.google.com/file/d/16jzNSmNnTNBMPIRgMePUHBfEfUu71Jx1/view?usp=share_link)<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;NOTES<br>
-      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[ROS Introduction](https://drive.google.com/file/d/16tqw6oTMrMNMMMsyYxTZE08oAqEhP-7p/view?usp=share_link)<br>
-      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[ROS Workspace,packages Hands-on](https://drive.google.com/file/d/16wwRytKaXQ8aKdojUZgnNMm5mKh8wCo2/view?usp=share_link)<br>
-     &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;[ROS CHEATSHEET](https://drive.google.com/file/d/17MFJ-NKVKUqZx4xRitgDs9d6O6kmf67w/view?usp=share_link)<br>
-&emsp;&emsp;&emsp;ROS 4: <br>    
-
-&emsp;&emsp;&emsp;&emsp;&emsp;VIDEOS:<br>
-	&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp;[ROS Topics Overview](https://drive.google.com/file/d/195uN7c3Y9S0L_gRRVhEM2x9qv__aFNNR/view?usp=share_link)<br>
-  	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[ROS Publisher and Subscriber(py)](https://drive.google.com/file/d/19B304EAoba_53vn6QR_O0YTIEWvRBpka/view?usp=share_link)<br>
-   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Custom ROS message overview](https://drive.google.com/file/d/18eonQyxuMJgFkWrSKUlkvLlfxCcoYiQh/view?usp=sharing)<br>
-   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Custom ROS message implementation](https://drive.google.com/file/d/193iD7SGK1VvgPBU8PYUWw4GsDXrXSu4P/view?usp=share_link)<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;NOTES:<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[ROS Topics Overview](https://drive.google.com/file/d/19jRRXKnYizvbVNM_E_FqF6vq-x1as-73/view?usp=sharing)<br>
-&emsp;&emsp;&emsp;ROS 5:<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;VIDEOS:<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[ROS services Overview](https://drive.google.com/file/d/1AyahEUkNFmObdqmaI-4TxNk9A6b27Aqo/view?usp=share_link)<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Steps to write ROS services](https://drive.google.com/file/d/1BDGUsGPwJlKBRMZ8mepC4LIIPVQ1L0vm/view?usp=share_link)<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[AddtoInts Service overview](https://drive.google.com/file/d/1Bk-ISQ0zkoIwHVZRsEfuf5a55cQZD9MG/view?usp=share_link)<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Write ROS service(client server) in py ](https://drive.google.com/file/d/1AUl677fN7rfgf7HB4zuroKpfpuiI7UCJ/view?usp=share_link)<br>
-
-a -->
-      
-
-	     
+## How It Works
+1. **Pipeline :** A Gstreamer pipeline is established to integrate the voice model and establish a modular communication between components.
+2. **Recognition :** A ROS publisher node with the voice models listens to microphone input for voice input.
+3. **Processing :** Upon detecting a command, the voice model converts the voice input into string data.
+4. **Publishing :** The string data is published over a speech topic.
+5. **Execution :** A node with a subscriber and a publisher, listens for the incoming data over the topic and publishes relevant commands to the robot.
 
 
+## Turtlesim
+Turtlesim is a basic, beginner-friendly simulator package in ROS that is designed for learning the basic concepts of ROS. It demonstrates the basic principles of ROS and gives you an overview of how ROS communications and systems are designed.
 
-
-##  TURTLESIM
-Turtlesim is a simple application (called package by using the ROS terminology) that is designed for learning the basic concepts of ROS. It demonstrates the basic principles of ROS and gives you an overview of how ROS is used in real-life robotic systems.
-
-> 1.square spiral
+> 1.Square Spiral
 ### ![ezgif-2-9f758776e7](https://github.com/sangwan7gaurav/Voice_Navigation/assets/138971930/e48e4f3d-5b82-48fc-820c-ffeda10232f2) 
 > 2.Circle
-# ![2](https://github.com/sangwan7gaurav/Voice_Navigation/assets/138971930/afdc9c2d-79d7-4569-9bac-3cb6f46373ac)
+### ![2](https://github.com/sangwan7gaurav/Voice_Navigation/assets/138971930/afdc9c2d-79d7-4569-9bac-3cb6f46373ac)
 > 3.Square
-# ![1](https://github.com/sangwan7gaurav/Voice_Navigation/assets/138971930/4d06d620-a81b-4201-8106-b02912b38383)
+### ![1](https://github.com/sangwan7gaurav/Voice_Navigation/assets/138971930/4d06d620-a81b-4201-8106-b02912b38383)
 > 4.Go to Goal
-# ![ezgif-2-e18b684b14](https://github.com/sangwan7gaurav/Voice_Navigation/assets/138971930/97559c15-b698-4bae-aaad-434488b60987)
-
-## GAZEBO
-Gazebo is a powerful and versatile robot simulation software that integrates with the Robot Operating System (ROS). It provides a realistic simulation environment where users can test and develop robots without needing physical hardware. Gazebo offers high-fidelity physics simulation, advanced 3D graphics, and a variety of sensors and actuators that mimic real-world counterparts.
-
-Some common commands to use Gazebo:<br>
-```gazebo``` <br> ```gazebo worlds/empty.world``` <br>```roslaunch gazebo_ros empty_world.launch ```<br>```rosrun gazebo_ros spawn_model -file <path_to_urdf> -urdf -model <model_name>```<br>
-![Screenshot_from_2024-07-08_19-38-48_optimized](https://github.com/user-attachments/assets/08304493-6c58-4234-9e66-24d0673e3c46)
-
-## TURTLEBOT3
-TurtleBot 3 is a low-cost, personal robot kit with open-source software that is popular for education and research in robotics. It is designed to be customizable and extendable with a variety of sensors and actuators, making it an excellent platform for learning ROS and robotics in general.<br>
-
-Some common commands:<br>
-`roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch`<br>`roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`<br>`rostopic echo /scan`<br>
-![ezgif-1-2f630658bd](https://github.com/user-attachments/assets/40d77a59-1c62-48e0-a3b2-d63e4d36044a)
-## VOICE RECOGNITION
-Creating a voice recognition model using PocketSphinx and GStreamer involves setting up a pipeline that captures audio input, processes it through PocketSphinx’s acoustic model, and outputs the recognized text. First, you’ll need to install PocketSphinx and its dependencies, such as SphinxBase, to handle the acoustic model and language processing. Additionally, GStreamer and its relevant plugins must be installed to facilitate audio capture and streaming. Once the necessary software is installed, you can configure GStreamer to capture audio from a microphone and pass it to PocketSphinx for real-time speech recognition. This setup allows for continuous voice input processing, making it suitable for various applications like voice-controlled interfaces or hands-free navigation systems.
+### ![ezgif-2-e18b684b14](https://github.com/sangwan7gaurav/Voice_Navigation/assets/138971930/97559c15-b698-4bae-aaad-434488b60987)
 
 
 
+## Gazebo
+
+Gazebo is a robotics simulation environment included within ROS. It provides a 3D physics-based simulation of robots, environments, and sensors, allowing users to simulate and test robotic systems in a virtual environment before deploying them in the real world.
 
 
+![Screenshot_from_2024-07-08_19-38-48_optimized](https://github.com/user-attachments/assets/ebf896a3-99d9-4b0d-b8c7-bb94ffbdb0f3)
 
 
+## Turtlebot 3
+
+TurtleBot 3 is a versatile open source robot platform designed for education, research, and prototyping applications in robotics. It is fully compatible with ROS, making it easy to integrate with ROS-based software libraries, tools, and simulations allowing users to leverage the extensive ROS ecosystem for developing and testing robotic applications.
 
 
+INSTALLATION:
+1) Run the following commands in your terminal. Make sure to clone the repositories into your workspace.
+   ```
+   git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
+   git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+   git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+   ```
+2) Build your packages.
+   ```
+   catkin_make
+   ```
+
+BASIC SIMULATION:
+1) Export your turtlebot model. We will be using burger.
+   ```
+   export TURTLEBOT3_MODEL=burger
+   ```
+2) To launch and empty world use the following command.
+   ```
+   roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+   ```
+3) To launch another world with objects use the following command.
+   ```
+   roslaunch turtlebot3_gazebo turtlebot3_world.launch
+   ```
+4) To perform teleoperations open another terminal and run the following.
+   ```
+   export TURTLEBOT3_MODEL=burger
+   roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+   ```
+![ezgif-1-2f630658bd](https://github.com/user-attachments/assets/0e1b9ee7-16bb-45a3-9458-2d36231953f0)
+
+
+RESOURCES:
+
+[Turtlebot 3 Manual](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)<br>
+
+## SLAM
+
+## Gstreamer
+
+GStreamer is a multimedia framework that provides a pipeline-based architecture for constructing multimedia applications. It is open source and widely used in various applications and platforms to handle multimedia processing, streaming, and playback. We will be using gstreamer to integrate pocketsphinx into our ROS project. Its modular nature will help us examine indivudual elements of the pipeline.
+
+INSTALLATION:  
+
+```
+apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+```
+
+## Voice Models
+
+### Pocketsphinx
+
+PocketSphinx is a lightweight speech recognition engine developed by Carnegie Mellon University (CMU).
+
+INSTALLATION:
+1) Clone the [pocketsphinx](https://github.com/cmusphinx/pocketsphinx) and [sphinxbase](https://github.com/cmusphinx/sphinxbase) repostories into your workspaces.
+2) Go into the sphinxbase folder and build it.
+
+   ```
+   ./autogen.sh
+   ./configure
+   make
+   make install
+   ```
+
+
+### VOSK 
+
+The VOSK voice model is another lightweight, open-source speech recognition toolkit that allows for offline voice command processing.
+
+INSTALLATION:  
+
+1. Run the following in a terminal.
+```
+pip install vosk
+wget https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip
+unzip vosk-model-small-en-us-0.15.zip
+```
+
+2. Load the model into your Vosk speech recognition code by specifying the path to the unzipped model directory.
+
+RESOURCES:
+
+[VOSK GitHub Repository](https://github.com/alphacep/vosk-api)<br>
+
+
+### Why Two Models?
+
+Both of these models provide vastly different benifits. Pocketsphinx is a lightweight library while VOSK is resource intensive. However setting up dictionaries and custom LM files for pocketsphinx is not as easy. Pocketsphinx is ideal for small vocabularies but VOSK has better accuracy in noisy environments. The ideal library is dependent on the task to be performed.
